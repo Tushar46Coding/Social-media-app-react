@@ -2,7 +2,7 @@ import React from "react";
 
 const Modal = ({ modal, handler, children }) => {
   return (
-    <div className="w-h absolute top-0 left-0 z-1000 back-grey flex-center scroll-x hide-y">
+    <div className="w-h absolute top-0 left-0 z-1000 back-grey flex-center scroll-x hide-y z-10001">
       <div className="p-50  back-white border-radius relative z-1001 flex-center column gap-10">
         <i
           onClick={() => handler(false)}

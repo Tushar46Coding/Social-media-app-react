@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Store } from "../Store";
 
-const PostContent = ({ item, i, setCommentModal, setCommentId }) => {
+const PostContent = ({ item, i, setCommentModal, setCommentId, user }) => {
+  const { state, dispatch: ctxDispatch } = useContext(Store);
+  const likesHandler = () => {
+    const post = { ...item };
+    const likdeArray = post.likes;
+    likdeArray.push(user.userName);
+    const obj = { ...post, likes: likdeArray };
+    ctxDispatch({ type: "ADDLIKES", payload: { object: obj, index: i } });
+  };
   return (
     <div className="card-hover w-100 padding-10-20  flex gap border-bottom">
       <img
@@ -32,7 +41,14 @@ const PostContent = ({ item, i, setCommentModal, setCommentId }) => {
               <span>{item.comments.length}</span>
             </div>
             <div className="flex gap-10 hover-pink flex-center font-small grey">
-              <i className="fa-regular fa-heart back-pink padding-10 radius-50"></i>
+              {item?.likes.includes(user?.userName) ? (
+                <i className="fa-regular fa-heart back-pink padding-10 radius-50 bold pink"></i>
+              ) : (
+                <i
+                  className="fa-regular fa-heart back-pink padding-10 radius-50"
+                  onClick={likesHandler}
+                ></i>
+              )}
               <span>{item.likes.length}</span>
             </div>
           </div>

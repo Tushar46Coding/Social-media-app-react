@@ -24,6 +24,7 @@ const CenterSection = () => {
             i={i}
             key={i}
             setCommentModal={setCommentModal}
+            user={user}
           />
         ))}
       </div>

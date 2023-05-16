@@ -74,6 +74,14 @@ function reducer(state, action) {
       localStorage.removeItem("twitterUser");
       return { ...state, user: null };
     }
+
+    case "ADDLIKES": {
+      const newPost = action.payload.object;
+      const index = action.payload.index;
+      const posts = [...state.posts];
+      posts[index] = newPost;
+      return { ...state, posts };
+    }
     case "CHANGE_IMAGE": {
       const newUser = action.payload;
       const users = [...state.users];

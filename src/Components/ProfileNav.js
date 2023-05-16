@@ -8,7 +8,7 @@ const ProfileNav = ({ user }) => {
         alt=""
         className="border w-h-60 radius-50 flex-center"
       />
-      <p className="flex-center w-100 h-100 truncate">{user.userName}</p>
+      <p className="flex-start w-100 h-100 truncate">{user.userName}</p>
     </div>
   );
 };
