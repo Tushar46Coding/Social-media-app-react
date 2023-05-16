@@ -4,7 +4,7 @@ const ConfirmModal = ({ handler }) => {
   return (
     <>
       <p className="font-big bold flex-center">
-        Please Confirm you want to sign out
+        Please Confirm if you want to sign out!
       </p>
       <button
         onClick={handler}

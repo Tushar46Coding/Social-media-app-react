@@ -23,7 +23,7 @@ const initialState = {
       tweet: "Mama dog shows gratitude to a woman for feeding her puppies.",
       caption: "#MothersDay2023",
       file: "https://media.istockphoto.com/id/530685719/photo/group-of-business-people-standing-in-hall-smiling-and-talking-together.jpg?s=612x612&w=is&k=20&c=4Y1biSeP9M5UKqNPVw6T1Wzuc995UGYIQF3Rvp8o3YA=",
-      likes: ["Tushar", "Raj", "Sagar"],
+      likes: [],
       comments: [
         { id: v4(), user: "sagar", message: "Wow" },
         { id: v4(), user: "Tushar", message: "Good click" },
@@ -38,7 +38,7 @@ const initialState = {
       tweet: "Maasdasog ssadsadasasoman for feeding her puppies.",
       caption: "#MothersDay2023",
       file: "https://cdn.pixabay.com/photo/2019/04/07/23/11/link-building-4111001_960_720.jpg",
-      likes: ["Tushar", "Raj", "Sagar"],
+      likes: [],
       comments: [
         { id: v4(), user: "sagar", message: "Wow" },
         { id: v4(), user: "Tushar", message: "Good click" },
@@ -53,7 +53,7 @@ const initialState = {
       tweet: "Mama dog shows gratitude to a woman for feeding her puppies.",
       caption: "#MothersDay2023",
       file: joker,
-      likes: ["Tushar", "Raj", "Sagar"],
+      likes: [],
       comments: [
         { id: v4(), user: "sagar", message: "Wow" },
         { id: v4(), user: "Tushar", message: "Good click" },

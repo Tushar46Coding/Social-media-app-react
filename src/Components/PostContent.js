@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Store } from "../Store";
 
 const PostContent = ({ item, i, setCommentModal, setCommentId, user }) => {
-  const { state, dispatch: ctxDispatch } = useContext(Store);
+  const { dispatch: ctxDispatch } = useContext(Store);
   const likesHandler = () => {
     const post = { ...item };
     const likdeArray = post.likes;
@@ -43,11 +43,13 @@ const PostContent = ({ item, i, setCommentModal, setCommentId, user }) => {
             <div className="flex gap-10 hover-pink flex-center font-small grey">
               {item?.likes.includes(user?.userName) ? (
                 <i className="fa-regular fa-heart back-pink padding-10 radius-50 bold pink"></i>
-              ) : (
+              ) : user ? (
                 <i
                   className="fa-regular fa-heart back-pink padding-10 radius-50"
                   onClick={likesHandler}
                 ></i>
+              ) : (
+                <i className="fa-regular fa-heart back-pink padding-10 radius-50"></i>
               )}
               <span>{item.likes.length}</span>
             </div>
