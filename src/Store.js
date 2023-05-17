@@ -90,20 +90,10 @@ function reducer(state, action) {
       return { ...state, user: newUser, users: users };
     }
     case "ADD_COMMENT": {
-      const comment = action.payload.comment;
-      const postId = action.payload.id;
+      const post = action.payload.post;
+      const index = action.payload.index;
       let posts = [...state.posts];
-      let post = posts.find((post) => post.id === postId);
-      if (post) {
-        const obj = {
-          id: post.comments.length + 1,
-          user: "Tushar",
-          message: comment,
-        };
-        post.comments.push(obj);
-        const index = posts.indexOf(post);
-        posts[index] = post;
-      }
+      posts[index] = post;
       return { ...state, posts: posts };
     }
     case "ADD_TWEET": {

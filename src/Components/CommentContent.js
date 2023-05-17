@@ -1,16 +1,25 @@
 import React, { useContext, useRef } from "react";
 import { Store } from "../Store";
+import { v4 } from "uuid";
 
 const CommentContent = ({ id }) => {
   const { state, dispatch: ctxDispatch } = useContext(Store);
-  const { posts } = state;
-  const post = posts.find((post) => post.id === id);
+  const { posts, user } = state;
+  let post = posts.find((post) => post.id === id);
   const comment = useRef();
   const handleComment = () => {
     if (comment.current.value.trim().length > 0) {
+      const index = posts.indexOf(post);
+      const obj = {
+        id: v4(),
+        user: user.userName,
+        message: comment.current.value,
+      };
+      const comments = [...post.comments, obj];
+      post.comments = comments;
       ctxDispatch({
         type: "ADD_COMMENT",
-        payload: { comment: comment.current.value, id },
+        payload: { post, index },
       });
       comment.current.value = "";
     } else {
