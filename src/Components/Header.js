@@ -23,7 +23,7 @@ const Header = () => {
       <div className="w-22 border-right padding-15-50 flex column header-gap border overflow-hide select-none bold">
         <i className="fa-brands fa-twitter header-icon blue nav-hover radius-50 padding-10-20" />
         <NavComp label="Explore">
-          <i className="fa-sharp fa-solid fa-hashtag icon "></i>
+          <i class="fa-sharp fa-solid fa-hashtag icon"></i>
         </NavComp>
         <NavComp label="Settings">
           <i className="fa-sharp fa-regular fa-gear icon bold"></i>

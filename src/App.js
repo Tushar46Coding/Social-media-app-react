@@ -5,6 +5,8 @@ import MainSection from "./Components/MainSection";
 import Footer from "./Components/Footer";
 import { useContext } from "react";
 import { Store } from "./Store";
+import Counter from "./Components/Counter";
+import Button from "./Components/Button";
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -19,6 +21,12 @@ function App() {
         {!user && <Footer />}
       </BrowserRouter>
     </div>
+    // <>
+    //   <Counter context="global" label="Global Counter" />
+    //   <Counter context="local" label="Counter" />
+    //   <Button label="Add" />
+    //   <Button label="Reset" />
+    // </>
   );
 }
 

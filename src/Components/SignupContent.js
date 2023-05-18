@@ -48,7 +48,9 @@ const SignupContent = ({ handler }) => {
         ></input>
         <div className="absolute top-0 left-0 w-100 flex space-between padding-0-10">
           <span className="font-mid grey">Name</span>
-          <span className="font-mid grey">0/50</span>
+          <span className="font-mid grey">
+            {userName.current?.value.length}/50
+          </span>
         </div>
       </div>
       <div className="w-100 relative mb-15">

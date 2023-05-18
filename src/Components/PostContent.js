@@ -10,6 +10,13 @@ const PostContent = ({ item, i, setCommentModal, setCommentId, user }) => {
     const obj = { ...post, likes: likdeArray };
     ctxDispatch({ type: "ADDLIKES", payload: { object: obj, index: i } });
   };
+  const removeLikeHandler = () => {
+    const post = { ...item };
+    const likdeArray = post.likes;
+    let likedArray = likdeArray.filter((like) => like !== user.userName);
+    const obj = { ...post, likes: likedArray };
+    ctxDispatch({ type: "ADDLIKES", payload: { object: obj, index: i } });
+  };
   return (
     <div className="card-hover w-100 padding-10-20  flex gap border-bottom">
       <img
@@ -33,8 +40,10 @@ const PostContent = ({ item, i, setCommentModal, setCommentId, user }) => {
             <div
               className="flex gap-10 hover-blue flex-center font-small grey"
               onClick={() => {
-                setCommentModal(true);
-                setCommentId(item.id);
+                if (user) {
+                  setCommentModal(true);
+                  setCommentId(item.id);
+                }
               }}
             >
               <i className="fa-regular fa-comment back-blue padding-10 radius-50"></i>
@@ -42,7 +51,10 @@ const PostContent = ({ item, i, setCommentModal, setCommentId, user }) => {
             </div>
             <div className="flex gap-10 hover-pink flex-center font-small grey">
               {item?.likes.includes(user?.userName) ? (
-                <i className="fa-regular fa-heart back-pink padding-10 radius-50 bold pink"></i>
+                <i
+                  className="fa-regular fa-heart back-pink padding-10 radius-50 bold pink"
+                  onClick={removeLikeHandler}
+                ></i>
               ) : user ? (
                 <i
                   className="fa-regular fa-heart back-pink padding-10 radius-50"

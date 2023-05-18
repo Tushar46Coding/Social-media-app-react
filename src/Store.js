@@ -6,6 +6,8 @@ import joker from "./images/joker.jpg";
 import { v4 } from "uuid";
 export const Store = createContext();
 const initialState = {
+  counter: 0,
+  globalCounter: 0,
   user: localStorage.getItem("twitterUser")
     ? JSON.parse(localStorage.getItem("twitterUser"))
     : null,
@@ -23,7 +25,7 @@ const initialState = {
       tweet: "Mama dog shows gratitude to a woman for feeding her puppies.",
       caption: "#MothersDay2023",
       file: "https://media.istockphoto.com/id/530685719/photo/group-of-business-people-standing-in-hall-smiling-and-talking-together.jpg?s=612x612&w=is&k=20&c=4Y1biSeP9M5UKqNPVw6T1Wzuc995UGYIQF3Rvp8o3YA=",
-      likes: [],
+      likes: ["sagar", "Raj"],
       comments: [
         { id: v4(), user: "sagar", message: "Wow" },
         { id: v4(), user: "Tushar", message: "Good click" },
@@ -38,7 +40,7 @@ const initialState = {
       tweet: "Maasdasog ssadsadasasoman for feeding her puppies.",
       caption: "#MothersDay2023",
       file: "https://cdn.pixabay.com/photo/2019/04/07/23/11/link-building-4111001_960_720.jpg",
-      likes: [],
+      likes: ["sagar", "Raj"],
       comments: [
         { id: v4(), user: "sagar", message: "Wow" },
         { id: v4(), user: "Tushar", message: "Good click" },
@@ -53,7 +55,7 @@ const initialState = {
       tweet: "Mama dog shows gratitude to a woman for feeding her puppies.",
       caption: "#MothersDay2023",
       file: joker,
-      likes: [],
+      likes: ["sagar", "Tushar", "Raj"],
       comments: [
         { id: v4(), user: "sagar", message: "Wow" },
         { id: v4(), user: "Tushar", message: "Good click" },
@@ -65,6 +67,14 @@ const initialState = {
 
 function reducer(state, action) {
   switch (action.type) {
+    case "INCREMENT_COUNTER": {
+      const counter = state.counter + 1;
+      const globalCounter = state.globalCounter + 1;
+      return { ...state, counter, globalCounter };
+    }
+    case "RESET_COUNTER": {
+      return { ...state, counter: 0 };
+    }
     case "LOGIN_APP": {
       const user = { ...action.payload, image: img };
       localStorage.setItem("twitterUser", JSON.stringify(user));
@@ -75,6 +85,13 @@ function reducer(state, action) {
       return { ...state, user: null };
     }
 
+    case "REMOVE_LIKES": {
+      const newPost = action.payload.object;
+      const index = action.payload.index;
+      const posts = [...state.posts];
+      posts[index] = newPost;
+      return { ...state, posts };
+    }
     case "ADDLIKES": {
       const newPost = action.payload.object;
       const index = action.payload.index;

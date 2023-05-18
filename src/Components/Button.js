@@ -1,7 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Store } from "../Store";
 
-const Button = ({ label, handler }) => {
-  return <button>{label}</button>;
+const Button = ({ label }) => {
+  const { dispatch: ctxDispatch } = useContext(Store);
+  return (
+    <button
+      onClick={() => {
+        if (label === "Add") {
+          ctxDispatch({
+            type: "INCREMENT_COUNTER",
+          });
+        } else {
+          ctxDispatch({
+            type: "RESET_COUNTER",
+          });
+        }
+      }}
+    >
+      {label}
+    </button>
+  );
 };
 
 export default Button;
